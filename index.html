@@ -79,8 +79,9 @@
       /* Mobile responsive - under 768px */
       @media (max-width: 768px) {
         header a[href="/"] > div {
-          min-width: 485px !important;
-          min-height: 110px !important;
+          min-width: 65vw !important;
+          max-width: 70vw !important;
+          min-height: 80px !important;
           background-position: left center !important;
         }
 
@@ -92,14 +93,14 @@
           justify-content: space-between !important;
           align-items: center !important;
           width: 100% !important;
+          position: relative !important;
         }
 
         /* Push hamburger menu to the far right */
-        header button[aria-label],
-        header button svg {
-          margin-left: auto !important;
+        header button {
           position: absolute !important;
           right: 16px !important;
+          z-index: 9999 !important;
         }
       }
 
