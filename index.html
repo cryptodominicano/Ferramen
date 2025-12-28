@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FERRAMEN S.R.L. | Importadora Comercial en República Dominicana</title>
+    <meta name="description" content="FERRAMEN S.R.L. - Importadora comercial líder en República Dominicana. Especialistas en importación, distribución y comercialización de juguetes, papelería, electrónicos, plásticos y repuestos automotrices." />
+    <meta name="keywords" content="importadora, comercial, República Dominicana, distribuidor, mayorista, juguetes, papelería, electrónicos, plásticos, automotriz" />
+    <meta name="author" content="FERRAMEN S.R.L." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ferramen.com.do" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ferramen.com.do" />
+    <meta property="og:title" content="FERRAMEN S.R.L. | Importadora Comercial en República Dominicana" />
+    <meta property="og:description" content="Soluciones integrales para tu negocio. Importación, distribución y comercialización de productos de calidad." />
+    <meta property="og:locale" content="es_DO" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FERRAMEN S.R.L. | Importadora Comercial" />
+    <meta name="twitter:description" content="Soluciones integrales para tu negocio en República Dominicana." />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "FERRAMEN S.R.L.",
+      "description": "Importadora comercial especializada en la distribución de productos para empresas e instituciones en República Dominicana.",
+      "url": "https://ferramen.com.do",
+      "logo": "https://ferramen.com.do/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santo Domingo",
+        "addressCountry": "DO"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-809-555-1234",
+        "contactType": "customer service",
+        "availableLanguage": "Spanish"
+      },
+      "sameAs": []
+    }
+    </script>
+    
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <script type="module" crossorigin src="assets/index-6-iwtMmw.js"></script>
+    <link rel="stylesheet" crossorigin href="assets/index-BMsEQGla.css">
+
+    <!-- Custom Logo Override -->
+    <style>
+      /* Hide the "F" box and text, replace with logo image */
+      header a[href="/"] > div > div.w-10,
+      header a[href="/"] > div > div.flex.flex-col {
+        display: none !important;
+      }
+
+      /* Add logo image to header */
+      header a[href="/"] > div {
+        background-image: url('assets/logo.png') !important;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        min-width: 550px !important;
+        min-height: 153px !important;
+      }
+
+          </style>
+
+</head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Formspree Integration -->
+    <script>
+      // Wait for React app to load, then modify the contact form
+      document.addEventListener('DOMContentLoaded', function() {
+        const checkForm = setInterval(function() {
+          const form = document.querySelector('form');
+          if (form && !form.hasAttribute('data-formspree-modified')) {
+            form.setAttribute('data-formspree-modified', 'true');
+
+            // Intercept submit button click instead of form submit
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+              submitBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                const formData = new FormData(form);
+                const originalText = submitBtn.textContent;
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Enviando...';
+
+                fetch('https://formspree.io/f/mqekbekq', {
+                  method: 'POST',
+                  body: JSON.stringify(Object.fromEntries(formData)),
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  }
+                })
+                .then(response => {
+                  if (response.ok) {
+                    // Clear form fields manually
+                    form.querySelectorAll('input, textarea').forEach(el => {
+                      el.value = '';
+                    });
+                    alert('¡Gracias! Su mensaje ha sido enviado.');
+                  } else {
+                    alert('Error al enviar. Por favor intente de nuevo.');
+                  }
+                })
+                .catch(error => {
+                  alert('Error al enviar. Por favor intente de nuevo.');
+                })
+                .finally(() => {
+                  submitBtn.disabled = false;
+                  submitBtn.textContent = originalText;
+                });
+
+                return false;
+              }, true);
+            }
+
+            clearInterval(checkForm);
+          }
+        }, 500);
+
+        setTimeout(() => clearInterval(checkForm), 10000);
+      });
+    </script>
+
+</body>
+</html>
