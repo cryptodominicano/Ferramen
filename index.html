@@ -41,7 +41,8 @@
       "logo": "https://ferramen.com.do/logo.png",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Santo Domingo",
+        "addressLocality": "San Luis",
+        "addressRegion": "Santo Domingo Este",
         "addressCountry": "DO"
       },
       "contactPoint": {
@@ -118,6 +119,43 @@
       @keyframes blink {
         0%, 50% { opacity: 1; }
         51%, 100% { opacity: 0; }
+      }
+
+      /* Interactive Map Styles */
+      .ferramen-map-container {
+        width: 100%;
+        margin-top: 2rem;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      .ferramen-map-container iframe {
+        width: 100%;
+        height: 350px;
+        border: none;
+      }
+
+      .ferramen-map-container .map-label {
+        background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+        color: white;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .ferramen-map-container .map-label svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      @media (max-width: 768px) {
+        .ferramen-map-container iframe {
+          height: 280px;
+        }
       }
 
       </style>
@@ -324,6 +362,65 @@
 
         setTimeout(() => clearInterval(checkForm), 10000);
       });
+    </script>
+
+    <!-- Interactive Map for Contact Section -->
+    <script>
+      (function() {
+        function injectMap() {
+          // Find the contact section (look for form or section with contact-related content)
+          const contactSection = document.querySelector('#contacto') ||
+                                 document.querySelector('[id*="contact"]') ||
+                                 document.querySelector('section:has(form)') ||
+                                 document.querySelector('form')?.closest('section');
+
+          if (!contactSection) return false;
+
+          // Check if map already exists
+          if (document.querySelector('.ferramen-map-container')) return true;
+
+          // Find the form container to place map nearby
+          const form = contactSection.querySelector('form');
+          const formContainer = form?.parentElement;
+
+          if (!formContainer) return false;
+
+          // Create map container
+          const mapContainer = document.createElement('div');
+          mapContainer.className = 'ferramen-map-container';
+          mapContainer.innerHTML = `
+            <div class="map-label">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Nuestra Ubicación - San Luis, República Dominicana
+            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30267.77774738889!2d-69.55574565!3d18.53648485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8604e8d1c1c5%3A0x4c59c6e2a2c6e4e5!2sSan%20Luis%2C%20Dominican%20Republic!5e0!3m2!1sen!2sus!4v1703700000000!5m2!1sen!2sus"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="FERRAMEN S.R.L. - San Luis, República Dominicana">
+            </iframe>
+          `;
+
+          // Insert after the form's parent container
+          formContainer.parentElement.insertBefore(mapContainer, formContainer.nextSibling);
+
+          return true;
+        }
+
+        // Wait for React to render, then inject map
+        const checkSection = setInterval(() => {
+          if (injectMap()) {
+            clearInterval(checkSection);
+          }
+        }, 500);
+
+        // Stop checking after 10 seconds
+        setTimeout(() => clearInterval(checkSection), 10000);
+      })();
     </script>
 
 </body>
