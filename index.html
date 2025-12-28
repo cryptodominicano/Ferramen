@@ -78,21 +78,15 @@
 
       /* Mobile responsive - under 768px */
       @media (max-width: 768px) {
+        /* Logo size - reverted to larger */
         header a[href="/"] > div {
-          min-width: 65vw !important;
-          max-width: 70vw !important;
-          min-height: 80px !important;
+          min-width: 280px !important;
+          min-height: 75px !important;
           background-position: left center !important;
         }
 
-        /* Ensure header is flex with space-between */
-        header > div,
-        header > nav,
+        /* Header layout */
         header {
-          display: flex !important;
-          justify-content: space-between !important;
-          align-items: center !important;
-          width: 100% !important;
           position: relative !important;
         }
 
@@ -100,7 +94,41 @@
         header button {
           position: absolute !important;
           right: 16px !important;
+          top: 50% !important;
+          transform: translateY(-50%) !important;
           z-index: 9999 !important;
+        }
+
+        /* Mobile menu dropdown styling */
+        header nav,
+        header > div > div[class*="absolute"],
+        header [class*="sheet"],
+        div[role="dialog"] {
+          background-color: #1e3a5f !important;
+          padding: 20px !important;
+        }
+
+        /* Hide logo inside mobile menu */
+        header nav a[href="/"],
+        div[role="dialog"] a[href="/"] {
+          display: none !important;
+        }
+
+        /* Style menu links */
+        header nav a:not([href="/"]),
+        div[role="dialog"] a:not([href="/"]) {
+          display: block !important;
+          padding: 15px 20px !important;
+          color: white !important;
+          font-size: 18px !important;
+          border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+        }
+
+        /* Style the Contáctenos button in menu */
+        header nav button,
+        div[role="dialog"] button:not([aria-label]) {
+          width: 100% !important;
+          margin-top: 15px !important;
         }
       }
 
