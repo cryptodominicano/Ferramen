@@ -79,8 +79,8 @@
       /* Mobile responsive - under 768px */
       @media (max-width: 768px) {
         header a[href="/"] > div {
-          min-width: 200px !important;
-          min-height: 55px !important;
+          min-width: 400px !important;
+          min-height: 110px !important;
           background-position: left center !important;
         }
 
@@ -94,10 +94,12 @@
           width: 100% !important;
         }
 
-        /* Push hamburger menu to the right */
+        /* Push hamburger menu to the far right */
         header button[aria-label],
         header button svg {
           margin-left: auto !important;
+          position: absolute !important;
+          right: 16px !important;
         }
       }
 
