@@ -76,7 +76,32 @@
         min-height: 153px !important;
       }
 
-          </style>
+      /* Mobile responsive - under 768px */
+      @media (max-width: 768px) {
+        header a[href="/"] > div {
+          min-width: 200px !important;
+          min-height: 55px !important;
+          background-position: left center !important;
+        }
+
+        /* Ensure header is flex with space-between */
+        header > div,
+        header > nav,
+        header {
+          display: flex !important;
+          justify-content: space-between !important;
+          align-items: center !important;
+          width: 100% !important;
+        }
+
+        /* Push hamburger menu to the right */
+        header button[aria-label],
+        header button svg {
+          margin-left: auto !important;
+        }
+      }
+
+      </style>
 
 </head>
   <body>
